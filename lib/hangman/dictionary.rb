@@ -1,11 +1,10 @@
 module Hangman
   module Dictionary
-    WORDS = %w{
-      banana avocado apple chocolate froyo peanut
-    }
-
     def self.random
-      WORDS.sample
+      file_data = File.read("linuxwords.txt").split
+      
+      words = file_data.select{|word| word.length >= 5}
+      words.sample
     end
   end
 end
